@@ -14,8 +14,8 @@ const login = asyncHandler(async (req, res) => {
     if (!email || !password) {
         return res.status(400).json({ message: 'Please provide email and password' })
     }
-    const validEmail = new User({ email });
-    const error = validEmail.validateSync();
+    const validate = new User({ email });
+    const error = validate.validateSync();
     if (error && error.errors && error.errors.email) {
         return res.status(400).json({ message: error.errors.email.message });
     }
